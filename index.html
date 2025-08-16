@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Florida Casino — Online (v2.2)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-felt">
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">FC</div>
+        <div>
+          <h1>Florida Casino</h1>
+          <small>4‑player teams • Your partner is North • v2.2</small>
+        </div>
+      </div>
+      <div class="controls">
+        <div class="field">
+          <label for="sizeRange">Size</label>
+          <input type="range" id="sizeRange" min="0.9" max="1.7" step="0.05" value="1.4">
+        </div>
+        <div class="field">
+          <label for="themeSel">Theme</label>
+          <select id="themeSel">
+            <option value="felt" selected>Felt</option>
+            <option value="wood">Wood</option>
+          </select>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="soundOn" checked>
+          <span>Sound</span>
+        </label>
+        <button id="newRoundBtn" class="primary" title="Deal a new round">New Round</button>
+        <button id="rulesBtn" class="ghost">Rules</button>
+        <label class="toggle">
+          <input type="checkbox" id="autoHints" checked>
+          <span>Hints</span>
+        </label>
+      </div>
+    </header>
+
+    <main>
+      <section class="scoreboard">
+        <div class="team" id="teamNS">
+          <div class="team-name">North + South</div>
+          <div class="score-line">
+            <span>Total:</span><span id="scoreNS">0</span>
+          </div>
+          <div class="round-scores" id="roundNS"></div>
+        </div>
+        <div class="team" id="teamEW">
+          <div class="team-name">East + West</div>
+          <div class="score-line">
+            <span>Total:</span><span id="scoreEW">0</span>
+          </div>
+          <div class="round-scores" id="roundEW"></div>
+        </div>
+      </section>
+
+      <section class="table">
+        <div class="players">
+          <div class="player north">
+            <div class="label">North (AI) <span class="think" id="thinkN"></span> <span class="skip" id="skipN"></span></div>
+            <div class="hand" id="handN"></div>
+            <div class="captured" id="capN" title="Captured"></div>
+          </div>
+          <div class="player west">
+            <div class="label">West (AI) <span class="think" id="thinkW"></span> <span class="skip" id="skipW"></span></div>
+            <div class="hand" id="handW"></div>
+            <div class="captured" id="capW" title="Captured"></div>
+          </div>
+          <div class="center">
+            <div class="table-header">
+              <div>Table</div>
+              <div class="last-capture">Last capture: <span id="lastCapture">–</span></div>
+            </div>
+            <div class="table-cards" id="tableArea"></div>
+            <div class="sweep-banner" id="sweepBanner">Sweep!</div>
+            <div class="log" id="log"></div>
+          </div>
+          <div class="player east">
+            <div class="label">East (AI) <span class="think" id="thinkE"></span> <span class="skip" id="skipE"></span></div>
+            <div class="hand" id="handE"></div>
+            <div class="captured" id="capE" title="Captured"></div>
+          </div>
+          <div class="player south">
+            <div class="label">You (South) <span class="skip" id="skipS"></span></div>
+            <div class="hand" id="handS"></div>
+            <div class="actions" id="actions"></div>
+            <div class="captured" id="capS" title="Captured"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="summary hidden" id="roundSummary">
+        <h2>Round Summary</h2>
+        <div class="summary-content" id="summaryContent"></div>
+        <div class="summary-buttons">
+          <button id="continueBtn" class="primary">Continue</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        © <span id="year"></span> Florida Casino (fan-made). This is an unofficial digital prototype for testing rules.
+      </div>
+    </footer>
+  </div>
+
+  <template id="tplCard">
+    <div class="card">
+      <div class="corner tl"></div>
+      <div class="pip"></div>
+      <div class="corner br"></div>
+    </div>
+  </template>
+
+  <template id="tplBuild">
+    <div class="build">
+      <div class="value"></div>
+      <div class="owner"></div>
+      <div class="stack"></div>
+      <div class="locktag"></div>
+    </div>
+  </template>
+
+  <script>window.VERSION = "2.2.0";</script>
+  <script src="script.js"></script>
+</body>
+</html>
